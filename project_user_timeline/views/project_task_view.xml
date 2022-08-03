@@ -1,20 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="project_task_timeline" model="ir.ui.view">
         <field name="name">project_task_timeline</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_timeline.project_task_timeline" />
         <field name="arch" type="xml">
-            <xpath
-                expr="timeline"
-                position="replace"
-            >
-                <timeline
-                    date_start="date_start"
-                    date_stop="date_end"
-                    default_group_by="user_id"
-                    event_open_popup="true"
-                    colors="white: user_id == false; #2ecb71: kanban_state == 'done'; #ec7063: kanban_state == 'blocked'"
-                />
+            <xpath expr="//timeline" position="attributes">
+                <attribute name="default_group_by">user_id</attribute>
             </xpath>
         </field>
     </record>
