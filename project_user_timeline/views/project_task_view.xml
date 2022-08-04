@@ -5,9 +5,63 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_timeline.project_task_timeline" />
         <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="project_id" />
+            </field>
             <xpath expr="//timeline" position="attributes">
                 <attribute name="default_group_by">user_id</attribute>
             </xpath>
+            <xpath expr="//span[@name='display_name']" position="before">
+                <t t-raw="record.project_id" />
+                <span> : </span>
+            </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="view_task_enhancement_milestone_tree">
+        <field name="name">project.task.enhancement.milestone.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field eval="2" name="priority" />
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="date_start" />
+                <field name="date_end" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_form2_inherit_pad_project" model="ir.ui.view">
+        <field name="name">project.task.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra_info']" position="attributes">
+                <attribute name="groups"></attribute>
+            </xpath>
+            <field name="sequence" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="email_cc" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="project_privacy_visibility" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="allowed_user_ids" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="displayed_image_id" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="date_assign" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+            <field name="date_last_stage_update" position="attributes">
+                <attribute name="groups"></attribute>
+            </field>
+        </field>
+    </record>
+
 </odoo>
+
