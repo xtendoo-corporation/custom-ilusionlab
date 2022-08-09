@@ -8,4 +8,5 @@ class Task(models.Model):
         string="Project name",
         related='project_id.name',
         readonly=False,
+        store=True,
     )

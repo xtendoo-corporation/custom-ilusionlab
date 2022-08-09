@@ -7,13 +7,22 @@
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="project_id" />
+                <field name="project_name" />
             </field>
             <xpath expr="//timeline" position="attributes">
                 <attribute name="default_group_by">user_id</attribute>
             </xpath>
             <xpath expr="//span[@name='display_name']" position="before">
-                <t t-raw="record.project_id" />
-                <span> : </span>
+                <span name="project_name">
+                    <t t-raw="record.project_name" />
+                    <span> : </span>
+                </span>
+
+            </xpath>
+            <xpath expr="//span[@name='display_name']" position="after">
+                <t t-if="record.planned_hours">
+                    <span> - </span>
+                </t>
             </xpath>
         </field>
     </record>
