@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="project_timesheet_control_customize">
+        <field name="name">project.timesheet.control.customize</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="project_timesheet_time_control.hr_timesheet_line_form" />
+        <field eval="2" name="priority" />
+        <field name="arch" type="xml">
+            <field name="date_time" position="replace">
+                <field name="date_time" required="1" string="Fecha de Inicio"/>
+            </field>
+            <field name="date_time_end" position="replace">
+                <field name="date_time_end" string="Fecha de Fin"/>
+            </field>
+        </field>
+    </record>
+</odoo>
+
